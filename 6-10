@@ -1,0 +1,88 @@
+6. Ask the user for a string and print out whether this string is a palindrome or not. (A palindrome is a string that reads the same forwards and backwards.)
+
+  yourString = str(input("Please input a word: "))
+  antiWord= yourString[::-1]
+  print(antiWord)
+  if yourString == antiWord:
+      print(yourString + " is a palindrome")
+  else:
+      print(yourString + " is not a palindrome")
+    
+    
+7. Let’s say I give you a list saved in a variable: a = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]. Write one line of Python that takes this list a and makes a new list that has only the even elements of this list in it.
+
+  elements = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+  newElements = []
+  for element in elements:
+      if element % 2 == 0:
+          newElements.append(element)
+  print(newElements)
+  
+ 8. Make a two-player Rock-Paper-Scissors game. (Hint: Ask for player plays (using input), compare them, print out a message of congratulations to the winner, and ask if the players want to start a new game)
+ 
+   import random
+
+  elements = ["rock",  "paper", "scissors"]
+  myStr = "select from a list: "
+  decision = "play"
+
+  while decision == "play":
+      yourElement = ""
+      autoElement = random.choice(elements)
+
+      while not(yourElement in elements):
+          yourElement = input(myStr + ', '.join(elements) + ": ")
+
+      print("You play against " + autoElement)    
+      if yourElement == autoElement:
+          print("There is no winner")
+      if yourElement == elements[0]:
+          if autoElement == elements[1]:
+              print("looser!")
+          if autoElement == elements[2]:
+              print("congrats, you're winner")
+
+      if yourElement == elements[1]:
+          if autoElement == elements[2]:
+              print("looser!")
+          if autoElement == elements[0]:
+              print("congrats, you're winner")
+
+      if yourElement == elements[2]:
+          if autoElement == elements[0]:
+              print("looser!")
+          if autoElement == elements[1]:
+              print("congrats, you're winner")
+
+      decision = input("Do you want to play again? If yes, type <<play>>: ").lower()
+
+9. Generate a random number between 1 and 9 (including 1 and 9). Ask the user to guess the number, then tell them whether they guessed too low, too high, or exactly right. (Hint: remember to use the user input lessons from the very first exercise)
+
+  import random
+
+  myNumber = -1
+  aNumber = random.randint(1,9)
+  print(aNumber)
+  while not(aNumber==myNumber):
+      myNumber = int(input("Please select a number from range (1,9) incl.: "))
+      if aNumber == myNumber:
+          print("Congrats")
+      elif aNumber > myNumber:
+          print("your number is too low")
+      else:
+          print("your number is too hight") 
+          
+10.  This week’s exercise is going to be revisiting an old exercise (see Exercise 5), except require the solution in a different way.
+Take two lists, say for example these two:
+	a = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+	b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+and write a program that returns a list that contains only the elements that are common between the lists (without duplicates). Make sure your program works on two lists of different sizes. 
+
+  a = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+  a=list(dict.fromkeys(a))
+  b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+  b=list(dict.fromkeys(b))
+
+  for el in a:
+      if el in b:
+          print(el)
